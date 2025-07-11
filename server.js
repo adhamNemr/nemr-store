@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const cors = require("cors");
-const sequelize = require("./config/db")
+const sequelize = require("./config/db");
 const path = require("path");
 
 dotenv.config();
@@ -22,13 +22,19 @@ app.use("/api/auth", require("./routes/auth.routes"));
 app.use("/api/products", require("./routes/products.routes"));
 app.use("/api/orders", require("./routes/order.routes"));
 app.use("/api/users", require("./routes/users.routes"));
+app.use("/api/brands", require("./routes/brand.routes"));
+app.use("/api/categories", require("./routes/category.routes"));
+app.use("/api/flash", require("./routes/flash.routes"));
+app.use("/api/cart", require("./routes/cart.routes"));
 
-
-sequelize.sync().then(() => {
-    console.log("Database Sync")
-    app.listen(process.env.port || 3000 , () =>{
-        console.log(`server running on port ${process.env.port || 3000}`);
+sequelize
+  .sync()
+  .then(() => {
+    console.log("Database Sync");
+    app.listen(process.env.PORT || 3000, () => {
+      console.log(`server running on port ${process.env.PORT || 3000}`);
     });
-}).catch((err) => {
-    console.log("DB Erorr : ", err.message)
-});
+  })
+  .catch((err) => {
+    console.log("DB Error:", err);
+  });

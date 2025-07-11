@@ -1,4 +1,3 @@
-/* General Reset & Box Model */
 *,
 *::before,
 *::after {
@@ -635,25 +634,6 @@ main {
   gap: 20px;
 }
 
-.category-card {
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.category-card:hover {
-  transform: scale(1.03);
-}
-
-.category-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
 .category-label {
   position: absolute;
   bottom: 0;
@@ -683,23 +663,6 @@ main {
   padding: 0 16px;
 }
 
-.category-card {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  text-align: center;
-  padding: 20px 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-decoration: none;
-  color: inherit;
-}
-
-.category-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-}
-
 .category-card img {
   width: 80px;
   height: 80px;
@@ -712,58 +675,102 @@ main {
   font-weight: 600;
   margin: 0;
 }
-/* Shop by Category Section */
+/* ===== Shop by Category Section ===== */
 .shop-by-category-section {
-  background-color: #f2f2f2;
-  padding: 30px 0;
+  padding: 40px 0;
+  width: 98%;
 }
 
 .shop-by-category-section .section-title {
-  text-align: center;
-  font-size: 22px;
-  font-weight: bold;
-  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
   margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #333;
 }
 
 .category-cards-wrapper {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 16px;
 }
 
 .category-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  width: 160px;
-  height: 160px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  cursor: pointer;
+  padding: 20px 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  height: auto;
+  min-height: 420px;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
 .category-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
 }
 
-.category-card i {
-  font-size: 32px;
-  color: #3787dc;
+.category-card img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  margin-bottom: 0;
+  max-height: 280px;
 }
 
 .category-card h5 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 1rem;
   color: #333;
+  margin: 0;
+  margin-top: 60px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .category-card {
+    flex: 1 1 48%;
+  }
+}
+
+@media (max-width: 576px) {
+  .category-card {
+    flex: 1 1 100%;
+  }
+}
+
+/* ===== Shop by Category Bar ===== */
+.shop-category-bar {
+  background-color: #323232  ; /* لون بنفسجي أنيق */
+  width: 98%;
+  margin: 10px auto 0 auto;
+  padding: 12px 0;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shop-category-bar h6 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #ffffff;
 }
