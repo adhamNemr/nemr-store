@@ -19,6 +19,7 @@
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
 }
 
 .cart-container {
@@ -276,7 +277,6 @@
 
 /* ========== CART LAYOUT FLEXBOX ========== */
 
-/* ========== UPDATED CART PAGE FLEX LAYOUT ========== */
 .cart-page-layout {
   display: flex;
   gap: 30px;
@@ -290,6 +290,7 @@
   flex: 2;
   max-width: 68%;
   box-sizing: border-box;
+  position: relative;
 }
 
 .cart-summary-placeholder {
@@ -306,7 +307,7 @@
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   position: sticky;
-  top: 110px; /* نفس القيمة اللي في جافاسكريبت */
+  top: 110px; 
   align-self: flex-start;
   z-index: 99;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -315,11 +316,11 @@
 
 .sticky-summary-active {
   position: fixed !important;
-  top: 110px !important; /* نفس القيمة */
+  top: 110px !important; 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   opacity: 0.95;
   transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sticky-summary {
@@ -428,3 +429,85 @@
   display: none;
 }
 
+
+/* ======= RECENTLY VIEWED STYLES ======= */
+.recently-viewed-section {
+  max-width: 1300px;
+  margin: 60px auto 0;
+  padding: 25px 30px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+
+/* New Recently Viewed Section Header */
+.recently-viewed-section .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.recently-viewed-section .section-header h4 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1c1c1c;
+}
+
+.recently-viewed-section .section-header a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #3787dc;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.recently-viewed-section .section-header a:hover {
+  color: #2567b5;
+}
+
+#recently-viewed .card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease;
+  box-sizing: border-box;
+}
+
+#recently-viewed .card:hover {
+  transform: translateY(-4px);
+}
+
+#recently-viewed .card-img-top {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+#recently-viewed .card-body {
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+#recently-viewed .card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+#recently-viewed .card-text {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+#recently-viewed .fw-bold {
+  font-size: 14px;
+  color: #000;
+}

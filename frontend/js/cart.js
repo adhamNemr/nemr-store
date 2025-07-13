@@ -63,6 +63,8 @@ const cartItems = [
 //     cartItems.push(...parsed);
 // }
 
+let fullSummaryHeight = 0;
+
 function renderCartItems() {
     const cartContainer = document.getElementById("cart-items");
     cartContainer.innerHTML = "";
@@ -188,6 +190,7 @@ function attachDeleteListeners() {
 
 document.addEventListener("DOMContentLoaded", () => {
 renderCartItems();
+renderRecentlyViewed();
 });
 
 // Sticky summary scroll handler with internal scroll if needed
@@ -198,15 +201,16 @@ const marginTop = 40;
 const fixedTop = navbarHeight + marginTop; // نثبت قيمة top
 
 window.addEventListener("DOMContentLoaded", () => {
-  const summary = document.querySelector(".cart-summary-wrapper");
-  if (summary) {
+const summary = document.querySelector(".cart-summary-wrapper");
+if (summary) {
     // حساب المواقع مرة واحدة فقط
     summaryLeft = summary.getBoundingClientRect().left + window.scrollX;
     summaryWidth = summary.offsetWidth;
 
     // ضبط top ثابت في العنصر
     summary.style.top = `${fixedTop}px`;
-  }
+    fullSummaryHeight = summary.scrollHeight;
+}
 });
 
 window.addEventListener("scroll", () => {
@@ -216,39 +220,53 @@ window.addEventListener("scroll", () => {
 
   if (!summary || !cartBox || !placeholder) return;
 
-  const summaryHeight = summary.offsetHeight;
+  const summaryHeight = fullSummaryHeight;
   const cartTop = cartBox.offsetTop;
-  const cartHeight = cartBox.offsetHeight;
+  const cartBottom = cartBox.offsetTop + cartBox.offsetHeight;
   const scrollY = window.scrollY;
 
-  // نستخدم top الثابت للحساب
   const triggerPoint = cartTop - fixedTop;
-  const stopPoint = cartTop + cartHeight - summaryHeight - marginTop;
+  const stopPoint = cartBottom - summaryHeight - 104;
+  const offsetFromTrigger = stopPoint - triggerPoint;
 
-  if (scrollY >= triggerPoint && scrollY <= stopPoint) {
-    if (!summary.classList.contains("sticky-summary-active")) {
-      summary.classList.add("sticky-summary-active");
 
-      // تعيين القيم المحسوبة مسبقاً
-      summary.style.left = `${summaryLeft}px`;
-      summary.style.width = `${summaryWidth}px`;
-      summary.style.top = `${fixedTop}px`;
 
-      // تعيين أبعاد placeholder
-      placeholder.style.height = `${summaryHeight}px`;
-      placeholder.style.width = `${summaryWidth}px`;
-    }
+  if (scrollY < triggerPoint) {
+    summary.classList.remove("sticky-summary-active", "sticky-summary-stopped");
+    summary.style.position = "";
+    summary.style.left = "";
+    summary.style.width = "";
+    summary.style.top = "";
+    summary.style.transform = "";
+    placeholder.style.height = "auto";
+    placeholder.style.width = "auto";
+  } else if (scrollY >= triggerPoint && scrollY <= stopPoint) {
+    summary.classList.add("sticky-summary-active");
+    summary.classList.remove("sticky-summary-stopped");
+
+    summary.style.position = "fixed";
+    summary.style.left = `${summaryLeft}px`;
+    summary.style.width = `${summaryWidth}px`;
+    summary.style.top = `${fixedTop}px`;
+    summary.style.transform = "translateY(0)";
+    summary.style.transition = "transform 0.3s ease-in-out";
+
+    placeholder.style.height = `${summaryHeight}px`;
+    placeholder.style.width = `${summaryWidth}px`;
   } else {
-    if (summary.classList.contains("sticky-summary-active")) {
-      summary.classList.remove("sticky-summary-active");
+    summary.classList.remove("sticky-summary-active");
+    summary.classList.add("sticky-summary-stopped");
 
-      summary.style.left = "";
-      summary.style.width = "";
-      summary.style.top = "";
+    // ثبّت الكارد مكانه باستخدام absolute ليقف فعليًا في نهاية العمود
+    summary.style.position = "absolute";
+    summary.style.left = `${summaryLeft}px`;
+    summary.style.width = `${summaryWidth}px`;
+    summary.style.top = `${stopPoint + 100}px`;
+    summary.style.transition = "box-shadow 0.4s ease-in-out, transform 0.3s ease-in-out";
+    summary.style.transform = "none";
 
-      placeholder.style.height = "auto";
-      placeholder.style.width = "auto";
-    }
+    placeholder.style.height = `${summaryHeight}px`;
+    placeholder.style.width = `${summaryWidth}px`;
   }
 });
 
@@ -256,3 +274,50 @@ document.getElementById("clear-cart")?.addEventListener("click", () => {
     cartItems.length = 0;
     renderCartItems();
 });
+
+function renderRecentlyViewed() {
+    const section = document.querySelector(".recently-viewed-section");
+    const recentContainer = document.getElementById("recently-viewed");
+    if (!section || !recentContainer) return;
+
+    // إزالة الهيدر السابق إن وجد
+    const existingHeader = section.querySelector(".section-header");
+    if (existingHeader) existingHeader.remove();
+
+    // إنشاء الهيدر الجديد
+    const header = document.createElement("div");
+    header.className = "section-header d-flex justify-content-between align-items-center mb-3";
+    header.innerHTML = `
+    <h4 class="m-0">Recently Viewed</h4>
+    <a href="#" class="text-primary small fw-semibold" id="see-all-recent">See All</a>
+    `;
+    section.insertBefore(header, recentContainer);
+
+    // استخدم فقط آخر 4 عناصر مختلفة تم عرضها في cartItems
+    const recentSet = new Map();
+    for (let i = cartItems.length - 1; i >= 0; i--) {
+    if (!recentSet.has(cartItems[i].id)) {
+        recentSet.set(cartItems[i].id, cartItems[i]);
+    }
+    if (recentSet.size === 4) break;
+    }
+
+    const recentItems = Array.from(recentSet.values());
+    recentContainer.innerHTML = "";
+
+    recentItems.forEach((item) => {
+    const itemHTML = `
+        <div class="col">
+        <div class="card h-100">
+            <img src="${item.image}" class="card-img-top" alt="${item.name}" />
+            <div class="card-body">
+            <h6 class="card-title">${item.name}</h6>
+            <p class="card-text text-muted">Size: ${item.size} | Color: ${item.color}</p>
+            <div class="fw-bold">EGP ${item.price.toFixed(2)}</div>
+            </div>
+        </div>
+        </div>
+    `;
+    recentContainer.insertAdjacentHTML("beforeend", itemHTML);
+    });
+}
