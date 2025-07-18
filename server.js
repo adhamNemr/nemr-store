@@ -26,6 +26,7 @@ app.use("/api/brands", require("./routes/brand.routes"));
 app.use("/api/categories", require("./routes/category.routes"));
 app.use("/api/flash", require("./routes/flash.routes"));
 app.use("/api/cart", require("./routes/cart.routes"));
+app.use("/api/inbox", require("./routes/inbox.routes"));
 
 sequelize
   .sync()
