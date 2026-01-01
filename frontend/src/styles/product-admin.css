@@ -1,0 +1,183 @@
+/* Product Management Styles */
+.product-admin-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.product-admin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.badge-new { background: #000; color: #fff; }
+.badge-used { background: #f0f0f0; color: #666; }
+
+.table-premium th {
+  background: #f8f9fa;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 15px;
+  border: none;
+}
+
+.table-premium td {
+  padding: 15px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.btn-action {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.btn-edit { background: #f0f7ff; color: #0061f2; }
+.btn-delete { background: #fff5f5; color: #e81500; }
+
+/* SHOPIFY-STYLE VARIANTS UI */
+.option-box {
+  background: #fdfdfd;
+  border: 1px solid #e1e3e5;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.option-tag {
+  background: #000;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px;
+}
+
+.option-tag i {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.option-tag i:hover {
+  opacity: 1;
+}
+
+.variant-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.variant-table tr {
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.variant-table td {
+  padding: 12px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.variant-table td:first-child {
+  border-left: 1px solid #eee;
+  border-radius: 8px 0 0 8px;
+}
+
+.variant-table td:last-child {
+  border-right: 1px solid #eee;
+  border-radius: 0 8px 8px 0;
+}
+
+.variant-name-label {
+  font-weight: 600;
+  color: #202223;
+  font-size: 14px;
+}
+
+/* AMAZON-STYLE TABS & STRUCTURED UI */
+.amazon-tabs {
+  display: flex;
+  border-bottom: 2px solid #e7e7e7;
+  margin-bottom: 24px;
+  gap: 32px;
+}
+
+.amazon-tab-item {
+  padding: 12px 0;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  color: #565959;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.amazon-tab-item.active {
+  color: #000;
+}
+
+.amazon-tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #000;
+}
+
+.amazon-variant-table {
+  width: 100%;
+  border: 1px solid #e1e3e5;
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 13px;
+}
+
+.amazon-variant-table th {
+  background: #f8f9fa;
+  padding: 12px;
+  border-bottom: 1px solid #e1e3e5;
+  color: #565959;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 11px;
+}
+
+.amazon-variant-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+.amazon-input-compact {
+  border: 1px solid #d5d9d9;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  width: 100%;
+}
+
+.amazon-input-compact:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+}
+
+.variation-theme-box {
+  background: #fdfdfd;
+  border: 1px solid #e1e3e5;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}

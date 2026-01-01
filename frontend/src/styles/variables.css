@@ -1,0 +1,16 @@
+:root {
+  /* Premium Palette */
+  --bg-color: #ffffff;
+  --text-main: #000000;
+  --text-muted: #666666;
+  --accent-color: #000000;
+  --border-light: #f0f0f0;
+  --bg-light: #f9f9f9;
+  
+  /* Layout */
+  --container-width: 1440px;
+  --gutter: 20px;
+  
+  /* Typography */
+  --font-main: 'Outfit', sans-serif;
+}

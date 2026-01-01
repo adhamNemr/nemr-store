@@ -1,0 +1,340 @@
+/* ================= LOGIN PAGE ================= */
+.auth-container {
+  display: flex;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+}
+.auth-visual {
+  flex: 1;
+  background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.auth-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2);
+}
+.auth-form-wrapper {
+  flex: 0 0 500px;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+}
+.auth-header {
+  margin-bottom: 40px;
+}
+.auth-header h2 {
+  font-weight: 800;
+  font-size: 2.5rem;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+.auth-header p {
+  color: #666;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-control {
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 0;
+  background: #f9f9f9;
+  font-family: inherit;
+}
+.form-control:focus {
+  background: #fff;
+  border-color: #000;
+  box-shadow: none;
+}
+.btn-auth {
+  background: #000;
+  color: #fff;
+  padding: 15px;
+  width: 100%;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  transition: opacity 0.2s;
+}
+.btn-auth:hover {
+  opacity: 0.8;
+  color: #fff;
+}
+.helper-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
+}
+.helper-links a {
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .auth-visual { display: none; }
+  .auth-form-wrapper { flex: 1; padding: 30px; }
+}
+
+/* ================= SHOP LISTING PAGE ================= */
+.shop-header {
+  padding-top: 100px;
+  padding-bottom: 40px;
+  text-align: center;
+  background: #fcfcfc;
+}
+.shop-header h2 { font-weight: 800; font-size: 3rem; margin: 0; }
+.filter-bar {
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.filter-group select {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Cart Drawer */
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1050;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.cart-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: -450px;
+  width: 100%;
+  max-width: 450px;
+  height: 100%;
+  background: #fff;
+  z-index: 1060;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-drawer.open {
+  transform: translateX(-450px);
+}
+
+.drawer-content {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.cart-item-row {
+  animation: slideInUp 0.4s ease forwards;
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.quantity-controls {
+  background: #f8f8f8;
+  border-color: #eee !important;
+}
+
+.quantity-controls button:hover {
+  background: #eee;
+}
+
+@media (max-width: 450px) {
+  .cart-drawer {
+    max-width: 100%;
+    right: -100%;
+  }
+  .cart-drawer.open {
+    transform: translateX(-100%);
+  }
+}
+
+/* Cart Icon Animation */
+@keyframes cartBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+.cart-icon.animate {
+  animation: cartBounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cart-icon.animate .cart-count {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Premium Cart Page Styles */
+.cart-page-content {
+  padding-top: 160px;
+  min-height: 100vh;
+}
+
+.cart-item-card {
+  transition: all 0.3s ease;
+}
+
+.cart-item-card:hover {
+  background-color: #fafafa;
+}
+
+.quantity-pill {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 100px;
+  overflow: hidden;
+  height: 40px;
+  width: fit-content;
+}
+
+.quantity-pill button {
+  width: 35px;
+  height: 100%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.quantity-pill button:hover {
+  background: #f0f0f0;
+}
+
+.quantity-pill span {
+  width: 40px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.btn-premium {
+  border-radius: 0;
+  padding: 15px 30px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.checkout-summary-box {
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  border: 1px solid #f0f0f0 !important;
+}
+
+.product-label {
+  font-size: 10px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+/* Luxury Cart Styles V2 */
+.cart-item-luxury {
+  transition: background 0.3s ease;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.cart-item-luxury:hover {
+  background-color: #fcfcfc;
+}
+
+.quantity-pill-luxury {
+  display: flex;
+  align-items: center;
+  border: 1px solid #000;
+  height: 35px;
+  width: fit-content;
+}
+
+.quantity-pill-luxury button {
+  width: 30px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.2s;
+}
+
+.quantity-pill-luxury button:hover {
+  background: #000;
+  color: #fff;
+}
+
+.quantity-pill-luxury span {
+  width: 30px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.checkout-summary-luxury {
+  background-color: #f9f9f9;
+  border: 1px solid #f0f0f0;
+  padding: 30px;
+}
+
+.total-row-luxury {
+  margin-top: 20px;
+}
+
+.item-meta-info p {
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+/* Fix for Sticky Column */
+.sticky-summary-wrapper {
+  position: sticky;
+  top: 140px;
+  z-index: 10;
+}
+
+@media (max-width: 991px) {
+  .sticky-summary-wrapper {
+    position: static;
+    margin-top: 40px;
+  }
+}
