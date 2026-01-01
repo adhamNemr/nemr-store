@@ -29,6 +29,9 @@ exports.register = async (req, res) => {
     });
   } catch (err) {
     console.error("Register error:", err);
+    if (err.name === 'SequelizeUniqueConstraintError') {
+      return res.status(400).json({ success: false, error: "Email is already in use. Try logging in." });
+    }
     res.status(500).json({ success: false, error: "Internal server error" });
   }
 };
@@ -89,15 +92,8 @@ exports.checkUser = async (req, res) => {
 };
 
 exports.getCurrentUser = async (req, res) => {
-  const token = req.headers.authorization?.split(" ")[1];
-
-  if (!token) {
-    return res.status(401).json({ error: "Access denied. No token provided." });
-  }
-
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await User.findByPk(decoded.id, {
+    const user = await User.findByPk(req.user.id, {
       attributes: ["id", "username", "email", "role"],
     });
 
@@ -107,8 +103,8 @@ exports.getCurrentUser = async (req, res) => {
 
     res.json({ user });
   } catch (err) {
-    console.error("Token error:", err);
-    res.status(401).json({ error: "Invalid token." });
+    console.error("Fetch user error:", err);
+    res.status(500).json({ error: "Internal server error." });
   }
 };
 exports.updateProfile = async (req, res) => {
@@ -161,4 +157,4 @@ exports.changePassword = async (req, res) => {
     console.error("Change password error:", err);
     res.status(500).json({ error: "Something went wrong" });
   }
-};
+}; //adham nemr 
