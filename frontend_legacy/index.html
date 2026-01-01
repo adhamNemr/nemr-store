@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEMR | Premium Fashion Marketplace</title>
+  
+  <!-- CSS & Fonts -->
+  <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ======= HEADER ======= -->
+  <header class="nemr-header">
+    <div class="header-container">
+      <!-- 1. Mobile Menu / Left Nav -->
+      <nav class="nav-left">
+        <a href="shop.html?cat=men" class="nav-link active">Men</a>
+        <a href="shop.html?cat=women" class="nav-link">Women</a>
+        <a href="shop.html?cat=kids" class="nav-link">Kids</a>
+      </nav>
+
+      <!-- 2. Logo (Center) -->
+      <a href="index.html" class="brand-logo">
+        <h1>NEMR</h1>
+      </a>
+
+      <!-- 3. Actions (Right) -->
+      <div class="nav-right">
+        <div class="search-trigger">
+          <i class="bi bi-search"></i>
+        </div>
+        <div class="user-actions">
+          <a href="login.html"><i class="bi bi-person"></i></a>
+          <a href="wishlist.html"><i class="bi bi-heart"></i></a>
+          <a href="cart.html" class="cart-icon">
+            <i class="bi bi-bag"></i>
+            <span class="cart-count">2</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======= HERO SECTION (Immersive Split) ======= -->
+  <section class="hero-split">
+    <!-- Men's Side -->
+    <div class="split-pane men-pane">
+      <img src="https://images.unsplash.com/photo-1506634572416-48cdfe530110?q=80&w=1585&auto=format&fit=crop" alt="Men">
+      <div class="pane-content">
+        <h2 class="animate-text">STREET<br>CULTURE</h2>
+        <a href="shop.html?cat=men" class="btn-underline">Shop Men</a>
+      </div>
+    </div>
+    
+    <!-- Women's Side -->
+    <div class="split-pane women-pane">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1528&auto=format&fit=crop" alt="Women">
+      <div class="pane-content">
+        <h2 class="animate-text">MODERN<br>MUSE</h2>
+        <a href="shop.html?cat=women" class="btn-underline">Shop Women</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= TICKER (Marquee) ======= -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <div class="ticker__item">FREE SHIPPING ON ORDERS OVER 2000 EGP</div>
+      <div class="ticker__item"> • </div>
+      <div class="ticker__item">NEW DROPS EVERY FRIDAY</div>
+      <div class="ticker__item"> • </div>
+      <div class="ticker__item">SUMMER SALE IS LIVE</div>
+      <div class="ticker__item"> • </div>
+      <div class="ticker__item">FREE SHIPPING ON ORDERS OVER 2000 EGP</div> <!-- Repetition for smooth loop -->
+    </div>
+  </div>
+
+  <!-- ======= "JUST DROPPED" (Product Slider) ======= -->
+  <section class="section-container">
+    <div class="section-header">
+      <h3>Just Dropped</h3>
+      <a href="shop.html?sort=new" class="view-all">View All <i class="bi bi-arrow-right"></i></a>
+    </div>
+
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="card-image">
+          <span class="badge-new">NEW</span>
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2020&auto=format&fit=crop" alt="Product">
+          <button class="btn-quick-add">Quick Add</button>
+        </div>
+        <div class="card-info">
+          <p class="brand">ZARA</p>
+          <h4 class="title">Oversized Cotton Shirt</h4>
+          <span class="price">899 EGP</span>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?q=80&w=2069&auto=format&fit=crop" alt="Product">
+          <button class="btn-quick-add">Quick Add</button>
+        </div>
+        <div class="card-info">
+          <p class="brand">H&M</p>
+          <h4 class="title">Slim Fit Linen Blazer</h4>
+          <span class="price">2,499 EGP</span>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <div class="card-image">
+          <span class="badge-sale">-20%</span>
+          <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=1964&auto=format&fit=crop" alt="Product">
+          <button class="btn-quick-add">Quick Add</button>
+        </div>
+        <div class="card-info">
+          <p class="brand">NIKE</p>
+          <h4 class="title">Air Force 1 '07</h4>
+          <span class="price"><span class="old">5,999</span> 4,799 EGP</span>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?q=80&w=2025&auto=format&fit=crop" alt="Product">
+          <button class="btn-quick-add">Quick Add</button>
+        </div>
+        <div class="card-info">
+          <p class="brand">ADIDAS</p>
+          <h4 class="title">Gazelle Sneakers</h4>
+          <span class="price">3,200 EGP</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= CURATED COLLECTIONS (Bento Grid) ======= -->
+  <section class="section-container">
+    <div class="section-header">
+      <h3>Curated Collections</h3>
+    </div>
+    
+    <div class="bento-grid">
+      <div class="bento-item tall" style="background-image: url('https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=1974&auto=format&fit=crop');">
+        <div class="bento-content">
+          <h4>Gentleman's<br>Corner</h4>
+          <a href="#">Explore</a>
+        </div>
+      </div>
+      <div class="bento-item wide" style="background-image: url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop');">
+        <div class="bento-content">
+          <h4>Summer<br>Essentials</h4>
+          <a href="#">Shop Now</a>
+        </div>
+      </div>
+      <div class="bento-item" style="background-image: url('https://images.unsplash.com/photo-1576185055363-ebd29e3bd90a?q=80&w=1974&auto=format&fit=crop');">
+        <div class="bento-content">
+          <h4>Footwear</h4>
+          <a href="#">View</a>
+        </div>
+      </div>
+      <div class="bento-item" style="background-image: url('https://images.unsplash.com/photo-1618331835717-810e976710dd?q=80&w=1974&auto=format&fit=crop');">
+        <div class="bento-content">
+          <h4>Accessories</h4>
+          <a href="#">View</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= PROMO BANNER ======= -->
+  <section class="promo-banner">
+    <div class="promo-content">
+      <h2>JOIN THE CLUB</h2>
+      <p>Get 15% off your first order when you sign up.</p>
+      <form class="promo-form">
+        <input type="email" placeholder="Your email address">
+        <button type="submit">SUBSCRIBE</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="modern-footer">
+    <div class="footer-top">
+      <div class="brand-col">
+        <h1>NEMR</h1>
+      </div>
+      <div class="links-col">
+        <h5>Shop</h5>
+        <a href="#">Men</a>
+        <a href="#">Women</a>
+        <a href="#">Kids</a>
+        <a href="#">Sale</a>
+      </div>
+      <div class="links-col">
+        <h5>Support</h5>
+        <a href="#">Help</a>
+        <a href="#">Returns</a>
+        <a href="#">Size Guide</a>
+      </div>
+      <div class="links-col">
+        <h5>Company</h5>
+        <a href="#">About</a>
+        <a href="#">Careers</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 NEMR STORE. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

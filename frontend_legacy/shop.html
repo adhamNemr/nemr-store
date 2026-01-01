@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEMR | Shop</title>
+  <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+  <!-- Header (Same as Index) -->
+  <header class="nemr-header scrolled"> <!-- Forced Scrolled Style -->
+    <div class="header-container">
+      <nav class="nav-left">
+        <a href="shop.html?cat=men" class="nav-link">Men</a>
+        <a href="shop.html?cat=women" class="nav-link">Women</a>
+        <a href="shop.html?cat=kids" class="nav-link">Kids</a>
+      </nav>
+      <a href="index.html" class="brand-logo"><h1>NEMR</h1></a>
+      <div class="nav-right">
+        <div class="search-trigger"><i class="bi bi-search"></i></div>
+        <div class="user-actions">
+          <a href="login.html"><i class="bi bi-person"></i></a>
+          <a href="wishlist.html"><i class="bi bi-heart"></i></a>
+          <a href="#" class="cart-icon"><i class="bi bi-bag"></i><span class="cart-count">2</span></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="shop-header">
+    <h2>ALL PRODUCTS</h2>
+    <p class="text-muted">New arrivals for the season</p>
+  </div>
+
+  <div class="filter-bar">
+    <div class="filter-group">
+      <select>
+        <option>Filter By: Category</option>
+        <option>T-Shirts</option>
+        <option>Jackets</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <select>
+        <option>Sort By: Best Selling</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+      </select>
+    </div>
+  </div>
+
+  <section class="section-container">
+    <div class="product-grid">
+      <!-- Repeated Products for Demo -->
+       <div class="product-card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2020&auto=format&fit=crop" alt="Product">
+          <button class="btn-quick-add">Quick Add</button>
+        </div>
+        <div class="card-info">
+          <p class="brand">ZARA</p>
+          <h4 class="title">Oversized Cotton Shirt</h4>
+          <span class="price">899 EGP</span>
+        </div>
+      </div>
+       <div class="product-card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?q=80&w=2025&auto=format&fit=crop" alt="Product">
+          <button class="btn-quick-add">Quick Add</button>
+        </div>
+        <div class="card-info">
+          <p class="brand">ADIDAS</p>
+          <h4 class="title">Gazelle Sneakers</h4>
+          <span class="price">3,200 EGP</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

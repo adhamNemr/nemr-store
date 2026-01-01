@@ -1,0 +1,655 @@
+:root {
+  /* Premium Palette */
+  --bg-color: #ffffff;
+  --text-main: #000000;
+  --text-muted: #666666;
+  --accent-color: #000000;
+  --border-light: #f0f0f0;
+  --bg-light: #f9f9f9;
+  
+  /* Layout */
+  --container-width: 1440px;
+  --gutter: 20px;
+  
+  /* Typography */
+  --font-main: 'Outfit', sans-serif;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+/* Removed hover opacity for specific elements if needed, but keeping generally */
+a:not(.brand-logo):hover {
+  opacity: 0.7;
+}
+
+/* Disable Hover for Logo specifically */
+.brand-logo {
+  opacity: 1 !important;
+  color: var(--text-main) !important;
+}
+
+.brand-logo:hover {
+  opacity: 1 !important;
+  color: var(--text-main) !important; /* Force Black on Hover */
+}
+
+button {
+  font-family: var(--font-main);
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* ================= HEADER ================= */
+.nemr-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 40px;
+  z-index: 1000;
+  background-color: #ffffff; /* Always Solid White */
+  color: #000000; /* Always Black Text */
+  border-bottom: 1px solid #f0f0f0;
+  transition: box-shadow 0.3s ease;
+}
+
+.nemr-header.scrolled {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Only add shadow on scroll */
+}
+
+/* Balanced Header */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  gap: 40px; /* Uniform Spacing for both sides */
+  flex: 1; /* Equal weight to push logo center */
+  align-items: center;
+}
+
+.nav-right {
+  justify-content: flex-end; /* Align right side to the end */
+}
+
+
+.nav-right i {
+  font-size: 20px;
+}
+
+.cart-icon {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background-color: #000;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+
+
+.nav-link {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px; /* Slightly sleeker */
+  letter-spacing: 1.5px;
+  color: var(--text-main) !important;
+  position: relative;
+}
+
+/* Underline effect for links */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: #000;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ================= HERO SPLIT ================= */
+.hero-split {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  position: relative;
+  /* Add margin top because header is fixed and solid now */
+  margin-top: 73px; 
+}
+
+.split-pane {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  overflow: hidden; /* Strict container */
+  cursor: pointer;
+  transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  border-right: 1px solid rgba(255,255,255,0.1); 
+}
+
+
+.split-pane img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+
+
+
+.pane-content {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+  width: 100%;
+  pointer-events: none; /* Let clicks pass through to pane */
+}
+
+.pane-content h2 {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.btn-underline {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 5px;
+  pointer-events: auto; /* Re-enable pointer events for button */
+}
+
+
+/* ================= TICKER ================= */
+.ticker-wrap {
+  width: 100%;
+  background-color: var(--text-main);
+  color: #fff;
+  padding: 12px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+}
+
+.ticker__item {
+  display: inline-block;
+  padding: 0 40px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+/* ================= SECTIONS & PRODUCT GRID ================= */
+.section-container {
+  max-width: var(--container-width);
+  margin: 80px auto;
+  padding: 0 40px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+
+.section-header h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.view-all {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-bottom: 1px solid currentColor;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+/* Product Card */
+.product-card {
+  cursor: pointer;
+}
+
+/* Strict Marketplace Product Card */
+.card-image {
+  position: relative;
+  width: 100%;
+  padding-bottom: 133.33%; /* Force 3:4 Aspect Ratio consistently */
+  height: 0; /* Let padding define height */
+  background-color: #f4f4f4; /* Placeholder color while loading */
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image fills box without distortion */
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+
+.product-card:hover .card-image img {
+  transform: scale(1.05); /* Subtle Zoom */
+}
+
+/* Badges */
+.badge-new, .badge-sale {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #fff;
+  color: #000;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.badge-sale {
+  background-color: #D93F3F; /* Elegant Red */
+  color: #fff;
+}
+
+/* Quick Add Button sliding up */
+.btn-quick-add {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 13px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .btn-quick-add {
+  transform: translateY(0);
+}
+
+.card-info {
+  text-align: left;
+}
+
+.card-info .brand {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.card-info .title {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-info .price {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.price .old {
+  text-decoration: line-through;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-right: 5px;
+}
+
+
+/* ================= BENTO GRID ================= */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 300px);
+  gap: 20px;
+}
+
+.bento-item {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--bg-light);
+  display: flex;
+  align-items: flex-end;
+  padding: 30px;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Grid Spanning */
+.bento-item.tall {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.bento-item.wide {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.bento-content {
+  z-index: 2;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.bento-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+
+.bento-content h4 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.bento-content a {
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+
+/* ================= PROMO BANNER ================= */
+.promo-banner {
+  background-color: #000;
+  color: #fff;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.promo-content h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+
+.promo-content p {
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.promo-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.promo-form input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #333;
+  background: #111;
+  color: #fff;
+  font-family: inherit;
+}
+
+.promo-form button {
+  background: #fff;
+  color: #000;
+  padding: 12px 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+
+/* ================= FOOTER ================= */
+.modern-footer {
+  border-top: 1px solid var(--border-light);
+  padding: 80px 40px 20px;
+  background-color: #fff;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80px;
+  max-width: var(--container-width);
+  margin: 0 auto 60px;
+}
+
+.brand-col h1 {
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.links-col {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.links-col h5 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.links-col a {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.links-col a:hover {
+  color: var(--text-main);
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid var(--border-light);
+  padding-top: 20px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .product-grid, .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bento-item.tall, .bento-item.wide {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .pane-content h2 { font-size: 2.5rem; }
+}
+
+@media (max-width: 768px) {
+  .header-container { padding: 10px 20px; }
+  .nav-left { display: none; /* Add Hamburger later */ }
+  .logo h1 { font-size: 20px; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  .hero-split { flex-direction: column; }
+}
+
+/* ================= LOGIN PAGE ================= */
+.auth-container {
+  display: flex;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+}
+.auth-visual {
+  flex: 1;
+  background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.auth-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2);
+}
+.auth-form-wrapper {
+  flex: 0 0 500px; /* Fixed width for form */
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+}
+.auth-header {
+  margin-bottom: 40px;
+}
+.auth-header h2 {
+  font-weight: 800;
+  font-size: 2.5rem;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+.auth-header p {
+  color: #666;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-control {
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 0;
+  background: #f9f9f9;
+  font-family: inherit;
+}
+.form-control:focus {
+  background: #fff;
+  border-color: #000;
+  box-shadow: none;
+}
+.btn-auth {
+  background: #000;
+  color: #fff;
+  padding: 15px;
+  width: 100%;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  transition: opacity 0.2s;
+}
+.btn-auth:hover {
+  opacity: 0.8;
+  color: #fff;
+}
+.helper-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
+}
+.helper-links a {
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .auth-visual { display: none; }
+  .auth-form-wrapper { flex: 1; padding: 30px; }
+}
+
+/* ================= SHOP LISTING PAGE ================= */
+.shop-header {
+  padding-top: 100px;
+  padding-bottom: 40px;
+  text-align: center;
+  background: #fcfcfc;
+}
+.shop-header h2 { font-weight: 800; font-size: 3rem; margin: 0; }
+.filter-bar {
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.filter-group select {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
