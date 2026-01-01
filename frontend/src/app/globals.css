@@ -1,0 +1,11 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+/* 
+  NEMR STORE - CORE Manifest
+  Common styles used across EVERY area of the platform.
+*/
+
+@import '../styles/variables.css';
+@import '../styles/base.css';
+@import '../styles/nemr-premium.css';
